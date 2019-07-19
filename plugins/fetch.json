@@ -1,0 +1,10 @@
+{
+  "cordova-plugin-thermal-printer": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-thermal-printer"
+    },
+    "is_top_level": true,
+    "variables": {}
+  }
+}
