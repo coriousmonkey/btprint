@@ -35,14 +35,21 @@ var app = {
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
 
-        ZJPrinter.list(function (data) {
-//            console.log("Success");
-            alert(JSON.stringify(data));  //list of printer in data array
-        }, function (err) {
-//            console.log("Error");
-//            console.log(err);
-            alert(JSON.stringify(err));
-        })
+        window.DatecsPrinter.listBluetoothDevices(
+                function (devices) {
+                    window.DatecsPrinter.connect(devices[0].address,
+                            function () {
+                                printSomeTestText();
+                            },
+                            function () {
+                                alert(JSON.stringify(error));
+                            }
+                    );
+                },
+                function (error) {
+                    alert(JSON.stringify(error));
+                }
+        );
 
     },
     // Update DOM on a Received Event
